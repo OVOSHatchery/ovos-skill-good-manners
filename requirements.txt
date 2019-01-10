@@ -1,3 +1,0 @@
-requests
-ai_demos
-git+https://github.com/nguyentr17/Insults
