@@ -12,6 +12,15 @@ monitor utterances and reprimand insults / foul language, show appreciation for 
         “hey mycroft, please tell me the price of bitcoin”
         bitcoin price
         you have really good manners, i like you
+        "hey mycroft, You are a disgusting maggot of a person."
+        sorry, i don't know how to answer that
+        you shouldn't be rude
+        "hey mycroft, what the fuck is this shit"
+        sorry, i don't know how to answer that
+        fuck and shit are such ugly words
+        "hey mycroft, can you please check the fucking asshole weather"
+        current weather is something
+        avoid using the words fucking and asshole, makes you look bad
 
 ## Examples 
 * "go F#&K yourself"
@@ -23,6 +32,7 @@ monitor utterances and reprimand insults / foul language, show appreciation for 
 
 ## TODO
 
+* handle single foul word (dialog is always plural)
 * test extensively
 * improve readme
 * settingsmeta.json
