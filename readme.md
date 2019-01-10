@@ -1,13 +1,16 @@
-# <img src='https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/robot.svg' card_color='#40DBB0' width='50' height='50' style='vertical-align:bottom'/> Good Manners Enforcer
+
+# <img src='goodmanner.png' width='50' height='50' style='vertical-align:bottom'/> Good Manners Enforcer
+
 [![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/1QJNhKM8tVv62XSUrST2vnaMXh5ADSyYP8)](https://en.cryptobadges.io/donate/1QJNhKM8tVv62XSUrST2vnaMXh5ADSyYP8)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/jarbasai)
 <span class="badge-patreon"><a href="https://www.patreon.com/jarbasAI" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/JarbasAl)
 
-respond to insults and good manners
+Responds to insults and good manners
 
-## About 
-monitor utterances and reprimand insults / foul language, show appreciation for good manners
+
+## About
+Monitor utterances and reprimand insults / foul language, show appreciation for good manners
 
         “hey mycroft, play the news please”
         news play
@@ -26,12 +29,12 @@ monitor utterances and reprimand insults / foul language, show appreciation for 
         current weather is something
         avoid using the words fucking and asshole, makes you look bad
 
-## Examples 
+## Examples
 * "go F#&K yourself"
 * "eat sh1$ and die"
 * "please something (X times in a row)"
 
-## Credits 
+## Credits
 @JarbasAl
 
 ## TODO
