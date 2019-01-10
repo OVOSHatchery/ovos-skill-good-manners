@@ -1,9 +1,8 @@
-# <img src='https://raw.githack.com/FortAwesome/Font-Awesome/master/svgs/solid/robot.svg' card_color='#40DBB0' width='50' height='50' style='vertical-align:bottom'/>
- Good Manners Enforcer
-respond to insults and good manners
+# <img src='goodmanner.png' width='50' height='50' style='vertical-align:bottom'/> Good Manners Enforcer
+Responds to insults and good manners
 
-## About 
-monitor utterances and reprimand insults / foul language, show appreciation for good manners
+## About
+Monitor utterances and reprimand insults / foul language, show appreciation for good manners
 
         “hey mycroft, play the news please”
         news play
@@ -22,12 +21,12 @@ monitor utterances and reprimand insults / foul language, show appreciation for 
         current weather is something
         avoid using the words fucking and asshole, makes you look bad
 
-## Examples 
+## Examples
 * "go F#&K yourself"
 * "eat sh1$ and die"
 * "please something (X times in a row)"
 
-## Credits 
+## Credits
 @JarbasAl
 
 ## TODO
