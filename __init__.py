@@ -25,9 +25,11 @@ IN THE SOFTWARE.
 
 from mycroft import MycroftSkill
 from datetime import timedelta, datetime
-from insults import Insults
 from ai_demos.cornell import politeness
-
+try:
+    from insults import Insults    
+except ImportError:
+    Insults = None
 
 class GoodMannersEnforcerSkill(MycroftSkill):
     def __init__(self):
@@ -63,14 +65,16 @@ class GoodMannersEnforcerSkill(MycroftSkill):
     def maybe_load_insult_model(self):
         if not self.model_loaded and not self.simple:
             # load insult classifier
-            Insults.load_model()
-            self.model_loaded = True
+            # TODO try import, install packages, not in raspberry pi
+            if Insults is not None:
+                Insults.load_model()
+                self.model_loaded = True
 
     def contains_foul_language(self, utterance):
         contains = False
         if self.simple:
             return self.match_voc_file(utterance, "foul_language")
-        else:
+        elif Insults is not None:
             foul_words, _ = Insults.foul_language([utterance], context=False)
             if len(foul_words):
                 contains = True
@@ -85,7 +89,7 @@ class GoodMannersEnforcerSkill(MycroftSkill):
         return False, []
 
     def is_insult(self, utterance):
-        if not self.simple:
+        if not self.simple and Insults is not None:
             rating = Insults.rate_comment(utterance)
             if rating >= self.settings["insult_threshold"]:
                 return True
