@@ -118,19 +118,17 @@ class GoodMannersEnforcerSkill(MycroftSkill):
 
     def handle_reset_event(self, message=None):
         self.ensure_converse()
-        # cancel a scheduled event to reset counter
-        self.cancel_scheduled_event('politeness_timeout')
         if self.polite_counter < self.settings["polite_threshold"]:
-            return
+            self.comebacks = []
         # reset counter if timeout was reached
         elif datetime.now() - self.last_timestamp > \
                 timedelta(minutes=self.settings["polite_timeout"]):
             self.polite_counter = 0
-        else:
-            # check for timeout again in 1 minute
-            self.schedule_event(self.handle_reset_event,
-                                datetime.now() + timedelta(minutes=1),
-                                name='politeness_timeout')
+            self.comebacks = []
+        # check for timeout again in 1 minute
+        self.schedule_event(self.handle_reset_event,
+                            datetime.now() + timedelta(minutes=1),
+                            name='politeness_timeout')
 
     def converse(self, utterances, lang="en-us"):
         # pre-process utterance
