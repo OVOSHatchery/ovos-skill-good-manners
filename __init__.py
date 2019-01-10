@@ -117,6 +117,7 @@ class GoodMannersEnforcerSkill(MycroftSkill):
         self.make_active()
 
     def handle_reset_event(self, message=None):
+        self.ensure_converse()
         # cancel a scheduled event to reset counter
         self.cancel_scheduled_event('politeness_timeout')
         if self.polite_counter < self.settings["polite_threshold"]:
