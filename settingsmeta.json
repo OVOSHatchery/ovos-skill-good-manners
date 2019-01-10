@@ -1,0 +1,36 @@
+{
+    "name": "Good Manners Enforcer",
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Settings",
+                "fields": [
+                    {
+                        "name": "simple",
+                        "type": "checkbox",
+                        "label": "Simple",
+                        "value": "true"
+                    },
+                    {
+                        "name": "insult_threshold",
+                        "type": "number",
+                        "label": "Insult threshold",
+                        "value": "0.65"
+                    },
+                    {
+                        "name": "polite_threshold",
+                        "type": "number",
+                        "label": "Polite threshold",
+                        "value": "4"
+                    },
+                    {
+                        "name": "polite_timeout",
+                        "type": "number",
+                        "label": "Polite timeout",
+                        "value": "10"
+                    }
+                ]
+            }
+        ]
+    }
+}
