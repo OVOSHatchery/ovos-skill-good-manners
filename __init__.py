@@ -46,7 +46,7 @@ class GoodMannersEnforcerSkill(MycroftSkill):
         self.foul_words = []
         self.polite_counter = 0
         self.last_timestamp = datetime.now()
-        self.settings.set_changed_callback(self.change_mode)
+        self.settings.set_changed_callback(self.maybe_load_insult_model)
 
     @property
     def simple(self):
@@ -65,9 +65,6 @@ class GoodMannersEnforcerSkill(MycroftSkill):
             # load insult classifier
             Insults.load_model()
             self.model_loaded = True
-
-    def change_mode(self):
-        self.maybe_load_insult_model()
 
     def contains_foul_language(self, utterance):
         contains = False
