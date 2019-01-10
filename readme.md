@@ -29,6 +29,10 @@ Monitor utterances and reprimand insults / foul language, show appreciation for 
         current weather is something
         avoid using the words fucking and asshole, makes you look bad
 
+for best insult detection also install in the venv the Insults package (py3 fork)
+
+        pip install git+https://github.com/nguyentr17/Insults
+
 ## Examples
 * "go F#&K yourself"
 * "eat sh1$ and die"
