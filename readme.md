@@ -10,7 +10,20 @@ Responds to insults and good manners
 
 
 ## About
-Monitor utterances and reprimand insults / foul language, show appreciation for good manners
+
+### Acknowledge and Appreciate Good Manners in Others
+Manners are reciprocal. If someone holds a door, say thank you. If you need something from
+a grocery shelf, and someone else is in the way, say "excuse me, please." Or ask them
+"could you please hand me a box of that cereal?" and then thank them.
+
+### Why Do We Need Manners?
+Manners make the world go 'round. They are to the smooth functioning of society as oil is
+to an engine.
+Without good manners, people get offended, hurt, and in extreme cases, very bad manners
+can lead to things such as the all-too-familiar public shootings, and even wars between
+countries when some official protocol is snubbed.
+
+This skill monitor utterances and reprimand insults / foul language, show appreciation for good manners
 
         “hey mycroft, play the news please”
         news play
