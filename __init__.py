@@ -23,17 +23,21 @@ IN THE SOFTWARE.
 
 """
 
-from mycroft import MycroftSkill
 from datetime import timedelta, datetime
+
 from ai_demos.cornell import politeness
+from ovos_workshop.skills import OVOSSkill
+
 try:
-    from insults import Insults    
+    from insults import Insults
 except ImportError:
     Insults = None
 
-class GoodMannersEnforcerSkill(MycroftSkill):
-    def __init__(self):
-        MycroftSkill.__init__(self)
+
+class GoodMannersEnforcerSkill(OVOSSkill):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         if "simple" not in self.settings:
             # if False use slower more accurate machine learning techniques
             self.settings["simple"] = True
@@ -48,7 +52,6 @@ class GoodMannersEnforcerSkill(MycroftSkill):
         self.foul_words = []
         self.polite_counter = 0
         self.last_timestamp = datetime.now()
-        self.settings.set_changed_callback(self.maybe_load_insult_model)
 
     @property
     def simple(self):
@@ -58,9 +61,14 @@ class GoodMannersEnforcerSkill(MycroftSkill):
 
     def initialize(self):
         self.maybe_load_insult_model()
-        self.add_event("recognizer_loop:utterance", self.ensure_converse)
         self.add_event("mycroft.skill.handler.complete", self.handle_output)
-        self.ensure_converse()
+        self.activate()
+
+    def handle_skill_deactivated(self, message=None):
+        """
+        skill is always in active skill list, ie, converse is always called
+        """
+        self.activate()
 
     def maybe_load_insult_model(self):
         if not self.model_loaded and not self.simple:
@@ -82,9 +90,10 @@ class GoodMannersEnforcerSkill(MycroftSkill):
 
     def match_voc_file(self, utterance, voc_file):
         if self.voc_match(utterance, voc_file):
-            foul_words = [w for w in
-                          self.voc_match_cache[self.lang + voc_file]
-                          if w in utterance]
+            foul_words = [
+                w for w in self.voc_match_cache[self.lang + voc_file]
+                if w in utterance
+            ]
             return True, foul_words
         return False, []
 
@@ -113,15 +122,8 @@ class GoodMannersEnforcerSkill(MycroftSkill):
             self.speak_dialog("said_foul_language",
                               {"foul_words": " and ".join(self.foul_words)})
 
-    def ensure_converse(self, message=None):
-        # ensure converse is called
-        # NOTE possible race condition
-        # TODO update once PR#1468 is merged
-        # https://github.com/MycroftAI/mycroft-core/pull/1468
-        self.make_active()
-
     def handle_reset_event(self, message=None):
-        self.ensure_converse()
+        self.activate()
         if self.polite_counter < self.settings["polite_threshold"]:
             self.comebacks = []
         # reset counter if timeout was reached
@@ -154,9 +156,5 @@ class GoodMannersEnforcerSkill(MycroftSkill):
                 self.comebacks.append("insult")
             if foul:
                 self.comebacks.append("foul")
-        self.ensure_converse()
+        self.activate()
         return False
-
-
-def create_skill():
-    return GoodMannersEnforcerSkill()
